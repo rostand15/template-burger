@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-asfalto font-sans text-creme antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid #f4b73f;
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Faixa xadrez de diner */
+  .checker {
+    background-color: #f6efe0;
+    background-image: conic-gradient(#161618 25%, transparent 0 50%, #161618 0 75%, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  /* Placeholder de foto: listras discretas */
+  .slot {
+    background-color: #232327;
+    background-image: repeating-linear-gradient(45deg, transparent 0 14px, rgba(246, 239, 224, 0.04) 14px 28px);
+  }
+
+  .wordmark-shadow {
+    text-shadow: 3px 3px 0 #d7282f;
+  }
+
+  /* Única animação de entrada da página (hero) */
+  .hero-in {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in {
+      animation: none;
+    }
+  }
+}
